@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 from deepgram import DeepgramClient
+import streamlit as st
 from openai import OpenAI
 from dotenv import load_dotenv
 from datetime import datetime
@@ -9,10 +10,10 @@ load_dotenv()
 
 class MeetingMinutesGenerator:
     def __init__(self):
-        self.deepgram = DeepgramClient(api_key=os.getenv("DEEPGRAM_API_KEY"))
+        self.deepgram = DeepgramClient(api_key=st.secrets["DEEPGRAM_API_KEY"])
         self.nvidia_client = OpenAI(
             base_url="https://integrate.api.nvidia.com/v1",
-            api_key=os.getenv("NVIDIA_API_KEY")
+            api_key=st.secrets["NVIDIA_API_KEY"]
         )
     
     def transcribe_audio(self, audio_file_path, model="nova-2"):
