@@ -82,9 +82,9 @@ class MeetingMinutesGenerator:
 
         2. **Meeting Objective**: One or two clear sentences stating the purpose.
 
-        3. **Key Discussion Points**: 
-        - Bullet points of critical topics discussed
-        - Include speaker attribution for important statements (e.g., "John raised concerns about...")
+        3. **Key Discussion Points**:
+        - Concise bullet points of critical topics discussed.
+        - Use standard markdown bullets only (strictly no tables).
 
         4. **Decisions Made**:
         - Clear, numbered list of concrete decisions reached
