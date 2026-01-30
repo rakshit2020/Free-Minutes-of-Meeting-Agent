@@ -68,7 +68,7 @@ class MeetingMinutesGenerator:
         
         prompt = f"""You are an expert executive assistant.
         Analyze the meeting transcript below and provide a **comprehensive yet concise** Minutes of Meeting (MoM).
-        Focus on actionable insights and clear accountability.
+        Focus on actionable insights and clear accountability.All the data should be from transcript.
 
         TRANSCRIPT:
         {transcript}
