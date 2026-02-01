@@ -65,7 +65,7 @@ def main():
         st.header("Settings")
         model_choice = st.selectbox(
             "Select Model",
-            options=["nova-2", "nova-3", "whisper-large"],
+            options=["nova-3", "whisper-large"],
             index=0,
             help="Choose the transcription model."
         )
