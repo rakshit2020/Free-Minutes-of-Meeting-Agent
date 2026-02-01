@@ -66,50 +66,60 @@ class MeetingMinutesGenerator:
         
         transcript = transcription_data["transcript"]
         
-        prompt = f"""You are an expert executive assistant.
-        Analyze the meeting transcript below and provide a **comprehensive yet concise** Minutes of Meeting (MoM).
-        Focus on actionable insights and clear accountability.All the data should be from transcript.
+        prompt = f"""
+You are a professional meeting assistant.
 
-        TRANSCRIPT:
-        {transcript}
+Generate **clear, concise, and readable Meeting Minutes** from the transcript below.
+Focus only on **what matters to stakeholders** — avoid unnecessary detail.
+All information must strictly come from the transcript.
 
-        Structure the output as follows:
+TRANSCRIPT:
+{transcript}
 
-        1. **Meeting Metadata**
-        - Date & Time (if available)
-        - Participants (list all speakers identified)
-        - Duration
+Structure the output as follows:
 
-        2. **Meeting Objective**: One or two clear sentences stating the purpose.
+---
 
-        3. **Key Discussion Points**:
-        - Concise bullet points of critical topics discussed.
-        - Use standard markdown bullets only (strictly no tables).
+## Meeting Minutes
 
-        4. **Decisions Made**:
-        - Clear, numbered list of concrete decisions reached
-        - Distinguish from general discussions
+### Meeting Summary
+- 3–5 sentences summarizing the overall discussion.
+- Highlight purpose, demos, evaluations, or outcomes.
+- Do NOT include step-by-step discussions.
 
-        5. **Action Items**:
-        - Format: [Task] - [Owner/Assignee] - [Deadline/Timeframe]
-        - If owner or deadline not mentioned, note as "TBD"
-        - Prioritize by urgency if possible
+### Attendees
+- List participants mentioned in the meeting.
+- If someone is referenced but not present, note it clearly.
 
-        6. **Open Questions/Blockers**:
-        - Items requiring follow-up or resolution
-        - Uncertainties that need clarification
+### Agenda / Topics Discussed
+- Use **short paragraphs or rich bullet points** (2–3 lines each).
+- Each point should explain:
+  - **What was discussed**
+  - **Why it was discussed**
+  - **What was demonstrated, evaluated, or compared (if any)**
+- This section alone should give a **complete understanding of the meeting**.
+- Avoid one-line or vague bullets.
 
-        7. **Next Steps/Follow-up**:
-        - When is the next meeting/check-in?
-        - What needs to happen before then?
+### Decisions
+- Bullet list of **clear decisions or recommendations made**.
+- Only include finalized or agreed-upon outcomes.
+- Do NOT include discussions or suggestions without agreement.
 
-        Requirements:
-        - Be concise but preserve ALL business-critical and technical details
-        - Use professional, direct language
-        - Ensure action items are specific and measurable
-        - Flag any urgent items or risks mentioned
-        - Use markdown formatting with clear hierarchy
-        - If transcript quality is poor or context is missing, note uncertainties"""
+### Action Items / Next Steps
+- Bullet list of follow-ups or actions.
+- Mention owner or timeline **only if explicitly stated**, otherwise omit.
+- Keep it short and practical.
+
+---
+
+Guidelines:
+- Keep the MoM **executive-friendly and skim-readable**
+- Prefer summaries over raw details
+- Avoid metadata like duration unless explicitly discussed
+- Use professional but simple language
+- No tables, no excessive formatting
+- If something is unclear, infer conservatively or omit
+"""
 
 
         completion = self.nvidia_client.chat.completions.create(
