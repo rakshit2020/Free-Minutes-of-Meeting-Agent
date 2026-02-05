@@ -40,6 +40,3 @@ This project is built as a **lightweight, fully functional prototype** to demons
 - Designed to be simple, fast, and easy to evaluate
 - Feedback and suggestions are welcome to improve future versions
 
----
-
-*Built to explore practical MoM automation using ASR + LLMs.*
